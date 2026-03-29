@@ -1,8 +1,23 @@
 {
   "current_phase": 1,
-  "current_lesson": 1,
+  "current_lesson": 2,
   "current_step": "theory",
-  "completed": {},
-  "scores": {},
+  "completed": {
+    "phase1": {
+      "lessons": [1],
+      "feynman": [1]
+    }
+  },
+  "scores": {
+    "phase1": {
+      "quizzes": {
+        "lesson1": {
+          "score": 3,
+          "total": 3,
+          "percentage": 100
+        }
+      }
+    }
+  },
   "last_updated": "2026-03-29"
 }
