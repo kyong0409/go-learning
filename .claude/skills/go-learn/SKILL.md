@@ -24,6 +24,7 @@ description: >
 | 4 | `phase4-production` | 프로덕션 Go | 6 | 5 | url-shortener |
 | 5 | `phase5-advanced` | 고급 시스템 | 5 | 5 | cli-deploy-tool |
 | 6 | `phase6-opensource` | K8s 오픈소스 딥다이브 | 5 | 6 | - |
+| 7 | `phase7-contribution` | 실전 오픈소스 기여 | 5 | 4 | - |
 
 모든 학습 자료는 `go-curriculum/` 디렉토리에 있습니다.
 각 Phase의 상세 레슨/과제 맵은 `references/phase{N}.md`를 참조합니다.
@@ -322,6 +323,7 @@ Phase 6: 오픈소스 딥다이브  [----------] 미시작
 - `references/phase4.md` — 프로덕션 Go (6 레슨, 5 과제, project-url-shortener)
 - `references/phase5.md` — 고급 시스템 (5 레슨, 5 과제, project-cli-deploy-tool)
 - `references/phase6.md` — K8s 오픈소스 딥다이브 (5 레슨, 6 과제)
+- `references/phase7.md` — 실전 오픈소스 기여: agent-sandbox (5 레슨, 4 과제)
 
 학습 프로세스 상세 가이드: `references/process.md`
 채점 기준 가이드: `references/grading.md`
