@@ -1,0 +1,131 @@
+# .goreleaser.yml
+# GoReleaser 설정 파일
+#
+# GoReleaser는 Go 프로젝트의 릴리즈 자동화 도구입니다.
+# - 크로스 컴파일 빌드
+# - GitHub/GitLab Release 생성
+# - Homebrew Tap 업데이트
+# - Docker 이미지 빌드/푸시
+#
+# 설치: https://goreleaser.com/install/
+# 사용:
+#   goreleaser release --snapshot --clean   (로컬 테스트)
+#   goreleaser release --clean             (실제 릴리즈, GITHUB_TOKEN 필요)
+
+version: 2
+
+# ============================================================
+# 빌드 설정
+# ============================================================
+
+builds:
+  - id: deploy-tool
+    main: .
+    binary: deploy-tool
+
+    # 빌드 시 버전 정보 주입 (-ldflags)
+    ldflags:
+      - -s -w
+      - -X github.com/curriculum/deploy-tool/cmd.Version={{.Version}}
+      - -X github.com/curriculum/deploy-tool/cmd.GitCommit={{.ShortCommit}}
+      - -X github.com/curriculum/deploy-tool/cmd.BuildDate={{.Date}}
+
+    # 크로스 컴파일 대상 플랫폼
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    # Windows는 arm64 제외
+    ignore:
+      - goos: windows
+        goarch: arm64
+
+    env:
+      - CGO_ENABLED=0  # 순수 Go 빌드 (외부 C 라이브러리 없음)
+
+# ============================================================
+# 아카이브 (tar.gz / zip)
+# ============================================================
+
+archives:
+  - id: default
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    # Windows는 zip, 나머지는 tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    # 아카이브에 포함할 파일
+    files:
+      - README.md
+      - LICENSE
+
+# ============================================================
+# 체크섬
+# ============================================================
+
+checksum:
+  name_template: "checksums.txt"
+  algorithm: sha256
+
+# ============================================================
+# 변경 로그 (CHANGELOG)
+# ============================================================
+
+changelog:
+  sort: asc
+  use: github   # GitHub API로 PR 기반 변경 로그 생성
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+      - "Merge pull request"
+      - "Merge branch"
+  groups:
+    - title: "새 기능"
+      regexp: "^feat"
+      order: 0
+    - title: "버그 수정"
+      regexp: "^fix"
+      order: 1
+    - title: "기타 변경"
+      order: 999
+
+# ============================================================
+# GitHub Release
+# ============================================================
+
+release:
+  github:
+    owner: curriculum
+    name: deploy-tool
+  # 릴리즈 노트에 체크섬 파일 포함
+  extra_files:
+    - glob: ./checksums.txt
+
+# ============================================================
+# Docker 이미지 (선택사항)
+# ============================================================
+
+# dockers:
+#   - image_templates:
+#       - "ghcr.io/curriculum/deploy-tool:{{ .Tag }}"
+#       - "ghcr.io/curriculum/deploy-tool:latest"
+#     dockerfile: Dockerfile
+#     build_flag_templates:
+#       - "--platform=linux/amd64"
+
+# ============================================================
+# Homebrew Tap (선택사항)
+# ============================================================
+
+# brews:
+#   - name: deploy-tool
+#     repository:
+#       owner: curriculum
+#       name: homebrew-tap
+#     homepage: https://github.com/curriculum/deploy-tool
+#     description: "kubectl과 유사한 컨테이너 배포 관리 CLI"

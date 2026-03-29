@@ -1,0 +1,22 @@
+{
+  "server": {
+    "host": "example.com",
+    "port": 9090,
+    "timeout": 60,
+    "tls": true
+  },
+  "database": {
+    "host": "db.example.com",
+    "port": 5432,
+    "name": "myapp",
+    "user": "admin",
+    "password": "dbpass123",
+    "max_connections": 20
+  },
+  "app": {
+    "name": "MyApp",
+    "version": "2.0.0",
+    "debug": false,
+    "allowed_hosts": ["example.com", "www.example.com"]
+  }
+}

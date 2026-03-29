@@ -1,0 +1,94 @@
+# docker-compose.yml
+# URL 단축 서비스 + PostgreSQL 개발 환경 구성
+# 실행: docker-compose up -d
+
+version: "3.9"
+
+services:
+  # ============================================================
+  # URL 단축 서비스
+  # ============================================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VERSION: "dev"
+        BUILD_TIME: "${BUILD_TIME:-unknown}"
+        GIT_COMMIT: "${GIT_COMMIT:-unknown}"
+    image: url-shortener:dev
+    container_name: url-shortener-app
+    ports:
+      - "8080:8080"
+    environment:
+      # 서버 설정
+      SERVER_ADDR: ":8080"
+      # 데이터베이스 연결
+      DATABASE_URL: "postgres://postgres:postgres@postgres:5432/urlshortener?sslmode=disable"
+      # 애플리케이션 설정
+      BASE_URL: "http://localhost:8080"
+      SHORT_CODE_LENGTH: "6"
+      RATE_LIMIT: "100"
+      LOG_LEVEL: "debug"
+      ENVIRONMENT: "development"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # ============================================================
+  # PostgreSQL 데이터베이스
+  # ============================================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: url-shortener-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: urlshortener
+    ports:
+      - "5432:5432"
+    volumes:
+      # 데이터 영속성
+      - postgres-data:/var/lib/postgresql/data
+      # 초기화 스크립트 (컨테이너 최초 생성 시 자동 실행)
+      - ./migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d urlshortener"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # ============================================================
+  # 데이터베이스 관리 UI (선택적)
+  # http://localhost:8081 에서 접근
+  # ============================================================
+  adminer:
+    image: adminer:latest
+    container_name: url-shortener-adminer
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - app-network
+    profiles:
+      - tools  # docker-compose --profile tools up 으로 선택적 실행
+
+# ============================================================
+# 네트워크 및 볼륨
+# ============================================================
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+    driver: local

@@ -1,0 +1,29 @@
+# config.yaml
+# mycli 기본 설정 파일
+#
+# 이 파일은 Viper가 자동으로 탐색합니다.
+# 위치: ./config.yaml 또는 ~/.mycli/config.yaml
+#
+# 환경 변수로 덮어쓰기 가능:
+#   MYCLI_OUTPUT=json mycli version
+#   MYCLI_GREET_DEFAULT_NAME=홍길동 mycli greet
+
+# 앱 전반 설정
+app:
+  name: mycli
+  debug: false
+
+# 출력 형식 (table | json | yaml)
+output: table
+
+# greet 커맨드 설정
+greet:
+  default_name: "Go 학습자"  # --name 미지정 시 사용
+  count: 1                    # 기본 반복 횟수
+  lang: ko                    # 기본 언어
+
+# 로깅 설정
+log:
+  level: info         # debug | info | warn | error
+  format: text        # text | json
+  file: ""            # 빈 문자열이면 stdout

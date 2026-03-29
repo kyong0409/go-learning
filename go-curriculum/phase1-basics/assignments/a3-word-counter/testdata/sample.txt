@@ -1,0 +1,14 @@
+Go is an open source programming language that makes it easy to build
+simple, reliable, and efficient software.
+
+Go was designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson.
+Go is statically typed, compiled, and syntactically similar to C,
+but with memory safety, garbage collection, structural typing,
+and CSP-style concurrency.
+
+The language is often referred to as Golang because of its domain name,
+golang.org, but the proper name is Go.
+
+Go Go Go! The Go programming language is great for building fast and reliable software.
+Many companies use Go for their backend services.
+Google, Uber, Docker, and Kubernetes are built with Go.

@@ -1,0 +1,10 @@
+{
+  "database": {
+    "host": "db.local",
+    "name": "testdb",
+    "user": "testuser"
+  },
+  "app": {
+    "name": "TestApp"
+  }
+}

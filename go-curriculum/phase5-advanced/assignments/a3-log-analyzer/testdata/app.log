@@ -1,0 +1,50 @@
+{"time":"2024-01-15T10:00:01Z","level":"INFO","msg":"서버 시작","port":8080}
+{"time":"2024-01-15T10:00:02Z","level":"DEBUG","msg":"설정 로드 완료","config":"config.yaml"}
+{"time":"2024-01-15T10:01:15Z","level":"INFO","msg":"사용자 로그인","user_id":1001}
+{"time":"2024-01-15T10:01:23Z","level":"INFO","msg":"사용자 로그인","user_id":1002}
+{"time":"2024-01-15T10:02:45Z","level":"WARN","msg":"응답 지연","latency_ms":250,"path":"/api/users"}
+{"time":"2024-01-15T10:03:11Z","level":"ERROR","msg":"DB 연결 실패","error":"connection timeout"}
+{"time":"2024-01-15T10:03:45Z","level":"ERROR","msg":"DB 연결 실패","error":"connection timeout"}
+{"time":"2024-01-15T10:04:02Z","level":"INFO","msg":"DB 재연결 성공"}
+{"time":"2024-01-15T10:05:33Z","level":"INFO","msg":"API 요청 처리","method":"GET","path":"/api/products","status":200}
+{"time":"2024-01-15T10:06:12Z","level":"INFO","msg":"API 요청 처리","method":"POST","path":"/api/orders","status":201}
+{"time":"2024-01-15T10:07:55Z","level":"WARN","msg":"응답 지연","latency_ms":380,"path":"/api/orders"}
+{"time":"2024-01-15T10:08:01Z","level":"ERROR","msg":"DB 연결 실패","error":"connection refused"}
+{"time":"2024-01-15T10:08:33Z","level":"ERROR","msg":"DB 연결 실패","error":"connection timeout"}
+{"time":"2024-01-15T10:09:14Z","level":"DEBUG","msg":"캐시 히트","key":"user:1001"}
+{"time":"2024-01-15T10:10:22Z","level":"INFO","msg":"API 요청 처리","method":"GET","path":"/api/users","status":200}
+{"time":"2024-01-15T10:11:05Z","level":"ERROR","msg":"DB 연결 실패","error":"connection timeout"}
+{"time":"2024-01-15T10:12:34Z","level":"INFO","msg":"사용자 로그아웃","user_id":1001}
+{"time":"2024-01-15T10:13:45Z","level":"WARN","msg":"높은 메모리 사용량","percent":85}
+{"time":"2024-01-15T10:14:12Z","level":"DEBUG","msg":"GC 실행","pause_ms":12}
+{"time":"2024-01-15T10:15:01Z","level":"INFO","msg":"API 요청 처리","method":"GET","path":"/health","status":200}
+{"time":"2024-01-15T11:00:00Z","level":"INFO","msg":"시간별 통계","requests":47}
+{"time":"2024-01-15T11:01:23Z","level":"INFO","msg":"사용자 로그인","user_id":1003}
+{"time":"2024-01-15T11:02:11Z","level":"ERROR","msg":"DB 연결 실패","error":"connection timeout"}
+{"time":"2024-01-15T11:03:45Z","level":"INFO","msg":"API 요청 처리","method":"GET","path":"/api/products","status":200}
+{"time":"2024-01-15T11:04:02Z","level":"WARN","msg":"응답 지연","latency_ms":420,"path":"/api/search"}
+{"time":"2024-01-15T11:05:33Z","level":"ERROR","msg":"인증 실패","error":"invalid token","user_id":9999}
+{"time":"2024-01-15T11:06:12Z","level":"ERROR","msg":"인증 실패","error":"invalid token","user_id":9998}
+{"time":"2024-01-15T11:07:55Z","level":"DEBUG","msg":"캐시 미스","key":"product:501"}
+{"time":"2024-01-15T11:08:01Z","level":"INFO","msg":"API 요청 처리","method":"POST","path":"/api/users","status":201}
+{"time":"2024-01-15T11:09:14Z","level":"WARN","msg":"디스크 사용량 경고","percent":78}
+{"time":"2024-01-15T11:10:22Z","level":"ERROR","msg":"인증 실패","error":"token expired","user_id":1002}
+{"time":"2024-01-15T11:11:05Z","level":"INFO","msg":"사용자 로그인","user_id":1004}
+{"time":"2024-01-15T11:12:34Z","level":"DEBUG","msg":"설정 재로드","trigger":"SIGHUP"}
+{"time":"2024-01-15T11:13:45Z","level":"INFO","msg":"API 요청 처리","method":"DELETE","path":"/api/orders/42","status":200}
+{"time":"2024-01-15T11:14:12Z","level":"WARN","msg":"응답 지연","latency_ms":310,"path":"/api/reports"}
+{"time":"2024-01-15T11:15:01Z","level":"INFO","msg":"API 요청 처리","method":"GET","path":"/health","status":200}
+{"time":"2024-01-15T11:16:22Z","level":"ERROR","msg":"DB 연결 실패","error":"connection timeout"}
+{"time":"2024-01-15T11:17:11Z","level":"INFO","msg":"API 요청 처리","method":"GET","path":"/api/users/1003","status":200}
+{"time":"2024-01-15T11:18:55Z","level":"WARN","msg":"응답 지연","latency_ms":280,"path":"/api/users"}
+{"time":"2024-01-15T11:19:01Z","level":"INFO","msg":"배치 작업 시작","job":"daily_report"}
+{"time":"2024-01-15T12:00:00Z","level":"INFO","msg":"시간별 통계","requests":52}
+{"time":"2024-01-15T12:01:15Z","level":"DEBUG","msg":"캐시 정리","evicted":23}
+{"time":"2024-01-15T12:02:33Z","level":"INFO","msg":"사용자 로그인","user_id":1005}
+{"time":"2024-01-15T12:03:01Z","level":"ERROR","msg":"DB 연결 실패","error":"connection timeout"}
+{"time":"2024-01-15T12:04:44Z","level":"INFO","msg":"API 요청 처리","method":"GET","path":"/api/analytics","status":200}
+{"time":"2024-01-15T12:05:22Z","level":"WARN","msg":"높은 CPU 사용량","percent":92}
+{"time":"2024-01-15T12:06:11Z","level":"ERROR","msg":"파일 저장 실패","error":"disk full","path":"/data/uploads"}
+{"time":"2024-01-15T12:07:45Z","level":"INFO","msg":"API 요청 처리","method":"POST","path":"/api/files","status":500}
+{"time":"2024-01-15T12:08:02Z","level":"ERROR","msg":"파일 저장 실패","error":"disk full","path":"/data/temp"}
+{"time":"2024-01-15T12:09:33Z","level":"WARN","msg":"응답 지연","latency_ms":890,"path":"/api/export"}

@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1774693416308,
+  "projectRoot": "D:\\dev\\golang\\go-curriculum\\phase2-structs-interfaces\\project-bookmark-api",
+  "techStack": {
+    "languages": [
+      {
+        "name": "Go",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "go.mod"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": "go",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "handler": {
+      "path": "handler",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1774693416266,
+      "keyFiles": [
+        "handler.go",
+        "handler_test.go"
+      ]
+    },
+    "model": {
+      "path": "model",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1774693416267,
+      "keyFiles": [
+        "bookmark.go"
+      ]
+    }
+  },
+  "hotPaths": [],
+  "userDirectives": []
+}

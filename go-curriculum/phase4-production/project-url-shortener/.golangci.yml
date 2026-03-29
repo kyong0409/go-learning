@@ -1,0 +1,45 @@
+# .golangci.yml
+# golangci-lint 설정 파일
+# 실행: golangci-lint run ./...
+
+run:
+  timeout: 5m
+  go: "1.22"
+
+linters:
+  enable:
+    - errcheck        # 오류 처리 누락 감지
+    - gosimple        # 코드 단순화 제안
+    - govet           # go vet 검사
+    - ineffassign     # 불필요한 변수 할당 감지
+    - staticcheck     # 정적 분석
+    - unused          # 미사용 코드 감지
+    - gofmt           # 코드 포맷 검사
+    - goimports       # import 정렬 검사
+    - misspell        # 오탈자 감지
+    - godot           # 주석 마침표 검사
+    - noctx           # context 없는 HTTP 요청 감지
+    - bodyclose       # HTTP 응답 Body 닫기 검사
+    - exhaustive      # switch 문 완전성 검사
+    - gocritic        # 다양한 Go 관용구 검사
+
+linters-settings:
+  gofmt:
+    simplify: true
+  goimports:
+    local-prefixes: github.com/learn-go/url-shortener
+  misspell:
+    locale: US
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - style
+      - performance
+
+issues:
+  exclude-rules:
+    # 테스트 파일에서는 일부 규칙 완화
+    - path: _test\.go
+      linters:
+        - errcheck
+        - godot

@@ -1,0 +1,14 @@
+{
+  "server": {
+    "host": "example.com",
+    "port": 99999,
+    "timeout": -1
+  },
+  "database": {
+    "name": "",
+    "max_connections": 0
+  },
+  "app": {
+    "name": ""
+  }
+}
